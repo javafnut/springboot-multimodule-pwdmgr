@@ -45,6 +45,8 @@ public class PwdMgrApplication implements CommandLineRunner {
         // quickSave();
     }
 
+    public void foo(){};
+
 //    public void runDumpAppData() {
 //
 //        PwdApplicationDataDump data = new PwdApplicationDataDump(this);
