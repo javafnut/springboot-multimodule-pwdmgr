@@ -16,6 +16,10 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 //import com.ibexsys.pwd.util.PwdApplicationDataDump;
 
+import com.ibexsys.pwd.web.PwdMgrApplication;
+import com.ibexsys.pwd.repository.AppProfileRepository;
+import com.ibexsys.pwd.entity.AppProfile;
+
 @SpringBootApplication
 
 // Add these below to resolve autowired issues with multimodules
