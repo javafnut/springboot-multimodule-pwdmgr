@@ -23,18 +23,21 @@ public class PwdApplicationDataDump {
     @Autowired
     EntityManager em;
 
-    @Autowired
-    public UserRepository userRepo;
 
-    @Autowired
-    public AppProfileRepository appProfileRepo;
+    //TODO - Reval if you whish to use straight from construtor or autowired
+    private UserRepository userRepo;
 
-    @Autowired
-    SiteRepository siteRepo;
+
+    private AppProfileRepository appProfileRepo;
+
+
+    private  SiteRepository siteRepo;
 
     public PwdApplicationDataDump() {
     }
 
+
+    // @ToDo removed autowire for the repos's revisit this
     public PwdApplicationDataDump(PwdMgrApplication app) {
 
         this.appProfileRepo = app.userAppProfileRepo;
@@ -88,7 +91,7 @@ public class PwdApplicationDataDump {
 
     }
 
-    public void dumpUsers() {
+    private void dumpUsers() {
 
         List<User> allUsers = userRepo.findAll();
 
@@ -97,7 +100,7 @@ public class PwdApplicationDataDump {
         }
     }
 
-    public void dumpSites() {
+    private void dumpSites() {
 
         List<Site> allSites = siteRepo.findAll();
 
@@ -120,15 +123,13 @@ public class PwdApplicationDataDump {
         byte[] salt = "UserSite".getBytes();
         byte[] password = "TestPassword".getBytes();
 
-        Site site = null;
-
         User user = new User("FooName", "fooLastName", "foo@foo.bar", salt, password);
         AppProfile appProfile = new AppProfile("New User XX", "Foo.xml");
 
         AppProfile profile = appProfileRepo.insertUserAndAppProfile(user, appProfile);
 
         for (int i = 0; i < 5; i++) {
-            site = new Site("Test Site - " + i, "ROOT", "test@test.com", "testLogin", password, "notes");
+            Site site = new Site("Test Site - " + i, "ROOT", "test@test.com", "testLogin", password, "notes");
             appProfileRepo.saveSite(profile, site);
         }
 

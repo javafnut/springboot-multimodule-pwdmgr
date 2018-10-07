@@ -14,11 +14,11 @@ import com.ibexsys.pwd.repository.UserRepository;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-//import com.ibexsys.pwd.util.PwdApplicationDataDump;
 
-import com.ibexsys.pwd.web.PwdMgrApplication;
-import com.ibexsys.pwd.repository.AppProfileRepository;
-import com.ibexsys.pwd.entity.AppProfile;
+//import com.ibexsys.pwd.util.PwdApplicationDataDump;
+//import com.ibexsys.pwd.web.PwdMgrApplication;
+//import com.ibexsys.pwd.repository.AppProfileRepository;
+//import com.ibexsys.pwd.entity.AppProfile;
 
 @SpringBootApplication
 
@@ -28,16 +28,26 @@ import com.ibexsys.pwd.entity.AppProfile;
 @ComponentScan(basePackages = {"com.ibexsys.pwd"})
 public class PwdMgrApplication implements CommandLineRunner {
 
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
+    public Logger logger = LoggerFactory.getLogger(this.getClass());
+
+    protected UserRepository userRepo;
+
+
+    protected SiteRepository siteRepo;
+
+    // @Autowired - @ToDo - used constructor vs field, option that may need to be revisited
+    protected AppProfileRepository userAppProfileRepo;
 
     @Autowired
-    public UserRepository userRepo;
+    public PwdMgrApplication(UserRepository userRepo, SiteRepository siteRepo,
+                          AppProfileRepository userAppProfileRepo){
 
-    @Autowired
-    public SiteRepository siteRepo;
+        this.userRepo = userRepo;
+        this.siteRepo = siteRepo;
+        this.userAppProfileRepo = userAppProfileRepo;
 
-    @Autowired
-    public AppProfileRepository userAppProfileRepo;
+    }
+
 
     public static void main(String[] args) {
         SpringApplication.run(PwdMgrApplication.class, args);
@@ -48,8 +58,6 @@ public class PwdMgrApplication implements CommandLineRunner {
         runDumpAppData();
         // quickSave();
     }
-
-    public void foo(){};
 
     public void runDumpAppData() {
 

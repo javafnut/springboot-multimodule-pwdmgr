@@ -30,10 +30,10 @@ public class SiteRepositoryTest implements CommandLineRunner {
     private byte[] BYTE_ARRAY = "TestPassword".getBytes();
 
     @Autowired
-    SiteRepository repo;
+    private SiteRepository repo;
 
     @Autowired
-    EntityManager em;
+    private EntityManager em;
 
     @Before
     public void setUp() throws Exception {

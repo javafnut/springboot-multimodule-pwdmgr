@@ -64,14 +64,13 @@ public class PwdMgrApplicationTests implements CommandLineRunner {
 
         byte[] salt = "UserSite".getBytes();
         byte[] password = "TestPassword".getBytes();
-        Site site = null;
 
         AppProfile profile = new AppProfile("TestLogin", "PWDFile.pwd");
         User user = new User("Foo", "Barr", "Foo@Foo.bar", salt, password);
         appProfileRepo.insertUserAndAppProfile(user, profile);
 
         for (int i = 0; i < 4; i++) {
-            site = new Site("Test Site " + i, "ROOT", "test@test.com", "testLogin", password, "notes");
+            Site site = new Site("Test Site " + i, "ROOT", "test@test.com", "testLogin", password, "notes");
             profile = appProfileRepo.saveSite(profile, site);
             // em.merge(site);
         }
@@ -81,7 +80,6 @@ public class PwdMgrApplicationTests implements CommandLineRunner {
         assertTrue(profile.getUser().getId() > 0);
         assertTrue(profile.getUser().getEmail().equalsIgnoreCase("Foo@Foo.bar"));
         assertTrue(profile.getSiteList().size() == 4);
-        ;
 
     }
 
@@ -92,14 +90,13 @@ public class PwdMgrApplicationTests implements CommandLineRunner {
 
         byte[] salt = "UserSite".getBytes();
         byte[] password = "TestPassword".getBytes();
-        Site site = null;
 
         AppProfile profile = new AppProfile("TestLogin", "PWDFile.pwd");
         User user = new User("Foo", "Barr", "Foo@Foo.bar", salt, password);
         appProfileRepo.insertUserAndAppProfile(user, profile);
 
         for (int i = 0; i < 4; i++) {
-            site = new Site("Test Site " + i, "ROOT", "test@test.com", "testLogin", password, "notes");
+            Site site = new Site("Test Site " + i, "ROOT", "test@test.com", "testLogin", password, "notes");
             profile = appProfileRepo.saveSite(profile, site);
             // em.merge(site);
         }
