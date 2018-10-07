@@ -84,12 +84,12 @@ public class AppProfileRepository {
     }
 
     @Transactional
-    public void deleteAppProfile(Long id) {
+    public void deleteAppProfileById(Long id) {
 
         AppProfile profile = findById(id);
         // List<Site> sites =
 
-        em.remove(profile);
+        this.deleteAppProfile(profile);
     }
 
     // public AppProfile insertSite(AppProfile profile, Site site) {

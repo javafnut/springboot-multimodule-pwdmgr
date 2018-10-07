@@ -45,19 +45,19 @@ public class PwdMgrApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-//        runDumpAppData();
+        runDumpAppData();
         // quickSave();
     }
 
     public void foo(){};
 
-//    public void runDumpAppData() {
-//
-//        PwdApplicationDataDump data = new PwdApplicationDataDump(this);
-//        // data.dumpAllTableData();
-//        logger.info("Data Dump\n\n" + data.dumpStrings());
-//
-//        data.createCompleteAppProflie();
-//
-//    }
+    public void runDumpAppData() {
+
+        PwdApplicationDataDump data = new PwdApplicationDataDump(this);
+        // data.dumpAllTableData();
+        logger.info("Data Dump\n\n" + data.dumpStrings());
+
+        data.createCompleteAppProflie();
+
+    }
 }
